@@ -3,6 +3,7 @@ import type * as activities from './activities';
 
 const {
   makeHTTPRequest,
+  makeWebsocketRequest,
   completeSomethingAsync,
   // cancellableFetch  // todo: demo usage
 } = proxyActivities<typeof activities>({
@@ -15,7 +16,12 @@ const {
 
 export async function httpWorkflow(): Promise<string> {
   const answer = await makeHTTPRequest();
-  return `The answer is ${answer}`;
+  return `HTTP: The answer is ${answer}`;
+}
+
+export async function websocketWorkflow(): Promise<string> {
+  const answer = await makeWebsocketRequest();
+  return `Websocket: The answer is ${answer}`;
 }
 
 export async function asyncActivityWorkflow(): Promise<string> {
